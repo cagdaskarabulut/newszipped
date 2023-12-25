@@ -1,0 +1,83 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/globals.scss";
+
+.PanelContainerStyle {
+  top: 0 !important;
+  width: 100vw;
+  border-radius: 0px;
+  margin: 0px;
+  padding: 0px;
+  
+
+  .header {
+    height: 75px !important;
+    justify-content: center;
+    font-family: permanentMarker !important;
+
+    // h1 {
+    //   margin-top: 0px;
+    //   margin-bottom: 0px;
+    //   padding-left: 16px !important;
+    // }
+
+    .LogoStyle {
+      
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding-left: 16px !important;
+  
+    }
+
+    .SearchBoxStyle {
+      padding-right: 16px !important;
+      width: 200px !important;
+      justify-content: end;
+      float: right;
+
+      .SearchBoxIconStyle {
+        font-size: 24px !important;
+        height: 35px !important;
+        margin-top: 12px !important;
+        color: $main !important;
+        float: right !important;
+      }
+
+      @include tablet-or-less {
+        margin-right: 0px !important;
+      }
+
+      :global {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: $darkColor !important;
+          border-width: 1px !important;
+        }
+
+        .MuiInputBase-input {
+          font-family: inherit !important;
+          color: $orangeDark !important;
+        }
+
+        .MuiSvgIcon-root {
+          color: $darkColor !important;
+        }
+
+        .MuiInputLabel-root {
+          color: $darkColor !important;
+          font-family: inherit !important;
+          
+        }
+
+        .MuiAutocomplete-input {
+          font-family: inherit !important;
+          color: $orangeDark !important;
+        }
+      }
+
+      @include tablet-or-less {
+        width: 100% !important;
+      }
+
+    }
+  }
+}

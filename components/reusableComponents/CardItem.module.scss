@@ -1,0 +1,52 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/globals.scss";
+
+.CardStyle {
+  padding: 10px !important;
+
+  .HeaderContent {
+    .CardHeaderTitleStyle {
+      font-weight: 700;
+      font-size: 24px;
+      color: $main;
+    }
+
+    .CardHeaderDateStyle {
+      margin-left: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      color: $secondary;
+    }
+
+    .CardHeaderRightStyle {
+      float: right;
+    }
+  }
+
+  .BodyContent {
+    margin-top: 10px !important;
+
+    .BodyLeftContentStyle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;/* after x line show ... */
+      -webkit-box-orient: vertical;
+      h1{
+        display: none;
+      }
+    }
+    
+  }
+
+  .TopicListStyle{
+    margin-top: 16px;
+    .TopicChipStyle{
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+  }
+
+
+}
