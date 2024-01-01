@@ -35,16 +35,16 @@ const HomePagePanel = () => {
     setLoadingLeftField(true);
     setLoadingRightField(true);
     console.log("use effect çalıştı");
-    fetch("/api/article-list-toprated")
+    fetch("/api/article_list_order_by_toprated")
       .then((res) => res.json())
       .then((data) => {
-        setTopRatedArticleList(data?.article_list_toprated);
+        setTopRatedArticleList(data?.article_list);
         setLoadingLeftField(false);
       });
-    fetch("/api/article-list-latest")
+    fetch("/api/article_list_order_by_latest")
       .then((res) => res.json())
       .then((data) => {
-        setLatestArticleList(data?.article_list_latest);
+        setLatestArticleList(data?.article_list);
         setLoadingRightField(false);
       });
   }, []);
@@ -61,15 +61,18 @@ const HomePagePanel = () => {
               <>
                 <LoadingSkeletonCard isLoading={false} />
                 {topRatedArticleList?.rows?.map((item) => (
+                  <>
                   <CardItem
-                    url={item.url}
-                    title={item.title}
-                    creationDate={item.createDate}
-                    topicList={item.topicname.split(",")}
-                    body={item.body}
-                    titleimage={item.titleimage}
-                    titleimageAlt={item.titleimageAlt}
+                    url={item?.url}
+                    title={item?.title}
+                    topics={item?.topics.split(",")}
+                    create_date={item?.create_date}
+                    like_number={item?.like_number}
+                    body={item?.body}
+                    title_image={item?.title_image}
+                    is_manuel_page={item?.is_manuel_page}
                   />
+                  </>
                 ))}
               </>
             )}
@@ -90,15 +93,18 @@ const HomePagePanel = () => {
               <>
                 <LoadingSkeletonCard isLoading={false} />
                 {latestArticleList?.rows?.map((item) => (
-                  <CardItem
-                    url={item.url}
-                    title={item.title}
-                    creationDate={item.createDate}
-                    topicList={item.topicname.split(",")}
-                    body={item.body}
-                    titleimage={item.titleimage}
-                    titleimageAlt={item.titleimageAlt}
-                  />
+                  <>
+                    <CardItem
+                      url={item?.url}
+                      title={item?.title}
+                      topics={item?.topics.split(",")}
+                      create_date={item?.create_date}
+                      like_number={item?.like_number}
+                      title_image={item?.title_image}
+                      body={item?.body}
+                      is_manuel_page={item?.is_manuel_page}
+                    />
+                  </>
                 ))}
               </>
             )}

@@ -1,5 +1,9 @@
 const fs = require("fs");
-const path = require("path");
+const rootPath = process.env.URL;
+const websiteUrl = process.env.URL_WEBSITE;
+const websiteUrlRootomain = process.env.URL_WEBSITE_ROOT_DOMAIN;
+const isLocal = process.env.IS_LOCAL; // TODO sadece localde true olacak, yüklenirken false a çevir
+const now = getNowWithISOFormat();
 
 function getNowWithISOFormat() {
   const today = new Date();
@@ -16,59 +20,14 @@ function replaceStringForUrlFormat(myString) {
   myString = myString.replace(")", "");
   myString = myString.replace(/ó/g, "o");
   myString = myString.replace(",", "");
-  // myString = myString.toLowerCase();
   return myString;
 }
 
-function generateRobotsTxtAndSitemapXml() {
-
-  let rootPath = `https://newszipped.com`;
-  let subDomainrootPath = `https://www.newszipped.com`;
-  let now = getNowWithISOFormat();
-  let dynamicRobotsTxtFields = "";
-  let dynamicSitemapFields = `
+function addUrlToSitemapList(existingList, newUrl) {
+  existingList = `${existingList}
 <url>
 <loc>
-${rootPath}
-</loc>
-<lastmod>
-${now}
-</lastmod>
-<changefreq>
-daily
-</changefreq>
-<priority>
-0.7
-</priority>
-</url>
-<url>
-<loc>
-${subDomainrootPath}
-</loc>
-<lastmod>
-${now}
-</lastmod>
-<changefreq>
-daily
-</changefreq>
-<priority>
-0.7
-</priority>
-</url>
-  `;
-
-  fetch("https://www.newszipped.com/api/article_summary_url_list")
-  .then((res) => res.json())
-  .then((dataList) => {
-    dataList?.article_summary_url_list?.rows.map((article, index) => {
-      let url = article.url;
-        dynamicRobotsTxtFields = `${dynamicRobotsTxtFields}Allow: /${url}
-`;
-
-        dynamicSitemapFields = `${dynamicSitemapFields}
-<url>
-<loc>
-${rootPath}/${url}
+${websiteUrl}/${newUrl}
 </loc>
 <lastmod>
 ${now}
@@ -81,49 +40,124 @@ daily
 </priority>
 </url>
 `;
+  return existingList;
+}
 
-let activePath = `${replaceStringForUrlFormat(article.name)}/${replaceStringForUrlFormat(skinObject.name)}`;
-
-            dynamicSitemapFields = `${dynamicSitemapFields}
-<url>
-<loc>
-${rootPath}/${activePath}
-</loc>
-<lastmod>
-${now}
-</lastmod>
-<changefreq>
-daily
-</changefreq>
-<priority>
-0.7
-</priority>
-</url>
+function addUrlToRobotsList(existingList, newUrl) {
+  existingList = `${existingList}Allow: /${newUrl}
 `;
+  return existingList;
+}
 
-            let robotsTxt = "";
-//-generate final
-            robotsTxt = 
-`# *
+function generateFinalRobotsTxtFile(robotsTxtFileSource) {
+  let result = `# *
 User-agent: *
-${dynamicRobotsTxtFields}
+${robotsTxtFileSource}
 Disallow: /AdminPanel
 Disallow: /AdminPanelLogin
 # Sitemaps
 Sitemap: https://www.newszipped.com/sitemap.xml`;
-          
-//-generate final
-            let sitemapXml = "";
-            sitemapXml = 
-`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-${dynamicSitemapFields}
-</urlset>
-            `;
+  return result;
+}
 
-            fs.writeFileSync("public/robots.txt", robotsTxt);
-            fs.writeFileSync("public/sitemap.xml", sitemapXml);
+function generateFinalSitemapXmlFile(SitemapXmlFileSource) {
+  let result = `
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+${SitemapXmlFileSource}
+</urlset>
+`;
+  return result;
+}
+
+function addStaticValuesIntoSitemapList() {
+  let result = `
+<url>
+<loc>
+${websiteUrl}
+</loc>
+<lastmod>
+${now}
+</lastmod>
+<changefreq>
+daily
+</changefreq>
+<priority>
+0.7
+</priority>
+</url>
+<url>
+<loc>
+${websiteUrlRootomain}
+</loc>
+<lastmod>
+${now}
+</lastmod>
+<changefreq>
+daily
+</changefreq>
+<priority>
+0.7
+</priority>
+</url>
+`;
+  return result;
+}
+
+// function generateRobotsTxtAndSitemapXml() {
+//   let dynamicRobotsTxtFields = "";
+//   let dynamicSitemapFields = addStaticValuesIntoSitemapList();
+
+//   fetch(rootPath + "/api/article_summary_url_list", {method: 'GET'})
+//   .then((res) => res.json())
+//   .then((dataList) => {
+//     //- add auto generated urls
+//     dataList?.article_summary_url_list?.rows.map((article, index) => {
+//       dynamicRobotsTxtFields = addUrlToRobotsList(dynamicRobotsTxtFields,article.url);
+//       dynamicSitemapFields = addUrlToSitemapList(dynamicSitemapFields,article.url);
+//     });
+
+//     //-generate final files to store
+//     let robotsTxt = generateFinalRobotsTxtFile(dynamicRobotsTxtFields);
+//     let sitemapXml = generateFinalSitemapXmlFile(dynamicSitemapFields);
+
+//     //-create physical files
+//     fs.writeFileSync("public/robots.txt", robotsTxt);
+//     fs.writeFileSync("public/sitemap.xml", sitemapXml);
+//   });
+// }
+
+function generateRobotsTxtAndSitemapXml() {
+  if (!isLocal) {
+    let dynamicRobotsTxtFields = "";
+    let dynamicSitemapFields = addStaticValuesIntoSitemapList();
+    console.log("url: " + process.env.URL + "/api/article_url_list");
+    fetch(process.env.URL + "/api/article_url_list", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((dataList) => {
+        //- add auto generated urls
+        console.log();
+        dataList?.article_url_list?.rows.map((article, index) => {
+          dynamicRobotsTxtFields = addUrlToRobotsList(
+            dynamicRobotsTxtFields,
+            article.url
+          );
+          dynamicSitemapFields = addUrlToSitemapList(
+            dynamicSitemapFields,
+            article.url
+          );
+        });
+
+        //-generate final files to store
+        let robotsTxt = generateFinalRobotsTxtFile(dynamicRobotsTxtFields);
+        let sitemapXml = generateFinalSitemapXmlFile(dynamicSitemapFields);
+
+        //-create physical files
+        fs.writeFileSync("public/robots.txt", robotsTxt);
+        fs.writeFileSync("public/sitemap.xml", sitemapXml);
       });
-    });
+  }
 }
 
 module.exports = generateRobotsTxtAndSitemapXml;

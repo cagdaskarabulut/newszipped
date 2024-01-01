@@ -44,11 +44,11 @@ export default function Header({ middleContent }) {
   async function selectAction(event, newValue) {
     setIsLoading(true);
     let selectedSkin = null;
-    // pageList?.map((option) =>
-    //   option.searchField?.toLowerCase() == newValue?.toLowerCase()
-    //     ? (selectedSkin = option)
-    //     : ""
-    // );
+    pageList?.map((option) =>
+      option.searchField?.toLowerCase() == newValue?.toLowerCase()
+        ? (selectedSkin = option)
+        : ""
+    );
     if (selectedSkin !== null) {
       router.push("/" + selectedSkin.newPageUrl);
     }
@@ -62,7 +62,8 @@ export default function Header({ middleContent }) {
 
   return (
     <div className={styles.PanelContainerStyle}>
-      <Container className={styles.header} maxWidth={100}>
+      <Container className={styles.header}> 
+      {/* maxWidth={100} */}
         <MyGrid
           forHeader={true}
           leftContent={
@@ -72,7 +73,7 @@ export default function Header({ middleContent }) {
                 style={{ marginTop: "5px" }}
               >
                 <Image
-                  src={"images/logo.png"}
+                  src={"/images/logo.png"}
                   width={isMobile ? 48 : 64}
                   height={isMobile ? 48 : 64}
                   onClick={() => goHomePage()}
@@ -88,7 +89,7 @@ export default function Header({ middleContent }) {
           rightContent={
             <>
               <div className={styles.SearchBoxStyle}>
-                <IconButton
+                {/* <IconButton
                   className={styles.SearchBoxIconStyle}
                   aria-label="delete"
                   size="large"
@@ -100,9 +101,9 @@ export default function Header({ middleContent }) {
                     fontSize="inherit"
                     onClick={() => setIsShowSearchBox(true)}
                   />
-                </IconButton>
+                </IconButton> */}
 
-                <Autocomplete
+                {/* <Autocomplete
                   style={{
                     opacity: !isShowSearchBox ? 0 : 1,
                     transition: "opacity .3s ease-in-out",
@@ -117,7 +118,7 @@ export default function Header({ middleContent }) {
                   multiple={false}
                   fullWidth={true}
                   clearOnBlur={true}
-                  // options={pageList?.map((option) => option)}
+                  options={pageList?.map((option) => option)}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -134,7 +135,7 @@ export default function Header({ middleContent }) {
                       }}
                     />
                   )}
-                />
+                /> */}
               </div>
             </>
           }

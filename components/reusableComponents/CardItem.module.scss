@@ -3,6 +3,7 @@
 @import "../../styles/globals.scss";
 
 .CardStyle {
+  margin-top: 20px;
   padding: 10px !important;
 
   .HeaderContent {
@@ -10,6 +11,7 @@
       font-weight: 700;
       font-size: 24px;
       color: $main;
+      cursor: pointer;
     }
 
     .CardHeaderDateStyle {
@@ -36,6 +38,9 @@
       h1{
         display: none;
       }
+    }
+    .BodyRightContentStyle, .BodyLeftContentStyle{
+      cursor: pointer;
     }
     
   }

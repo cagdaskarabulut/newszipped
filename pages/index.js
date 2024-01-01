@@ -1,6 +1,6 @@
 import MetaPanel from "../components/mainComponents/MetaPanel";
 import HomePagePanel from "../components/pageComponents/HomePagePanel";
-import ScrollToTop from "../components/reusableComponents/ScrollToTopButton";
+import ScrollToTopButton from "../components/reusableComponents/ScrollToTopButton";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         imageAlt="newszipped"
       />
       <HomePagePanel />
-      <ScrollToTop showBelow={250} />
+      <ScrollToTopButton showBelow={250} />
 
       <style jsx global>{`
         body {

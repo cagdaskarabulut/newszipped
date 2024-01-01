@@ -1,8 +1,5 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import ShareIcon from "@mui/icons-material/Share";
 import { Chip } from "@mui/material";
@@ -12,15 +9,17 @@ import MyGrid from "../toolComponents/MyGrid";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useContext, useEffect, useState } from "react";
+import { format } from "date-fns";
 
 const CardItem = ({
   url,
   title,
-  createDate,
-  topicList,
+  topics,
+  create_date,
+  like_number,
   body,
-  titleimageAlt,
-  titleimage,
+  title_image,
+  is_manuel_page,
 }) => {
   const router = useRouter();
   const [isCopyLinkMessageOpen, setIsCopyLinkMessageOpen] = useState(false);
@@ -43,7 +42,12 @@ const CardItem = ({
         >
           {title}
         </span>
-        <span className={styles.CardHeaderDateStyle} onClick={() => goToArticlePageAction()}>{createDate}</span>
+        <span
+          className={styles.CardHeaderDateStyle}
+          onClick={() => goToArticlePageAction()}
+        >
+          {format(create_date, "dd/MM/yyyy")}
+        </span>
       </>
     );
   };
@@ -66,7 +70,7 @@ const CardItem = ({
   const BodyLeftContent = () => {
     return (
       <>
-        <div 
+        <div
           className={styles.BodyLeftContentStyle}
           dangerouslySetInnerHTML={{ __html: body }}
           onClick={() => goToArticlePageAction()}
@@ -79,16 +83,17 @@ const CardItem = ({
     return (
       <>
         <div className={styles.BodyRightContentStyle}>
-          <Image
-                    onClick={() => goToArticlePageAction()}
-            src={titleimage}
-            alt={titleimageAlt}
-            key={"img_" + titleimageAlt}
-            objectFit="contain"
-            width={100}
-            height={100}
-            style={{ float: "right" }}
-          />
+          {title_image && (
+            <Image
+              onClick={() => goToArticlePageAction()}
+              src={title_image}
+              key={"image_" + url}
+              objectFit="contain"
+              width={100}
+              height={100}
+              style={{ float: "right" }}
+            />
+          )}
         </div>
       </>
     );
@@ -113,7 +118,7 @@ const CardItem = ({
         ></MyGrid>
       </div>
       <div className={styles.TopicListStyle}>
-        {topicList?.map((topic) => (
+        {topics?.map((topic) => (
           <Chip
             className={styles.TopicChipStyle}
             label={topic}

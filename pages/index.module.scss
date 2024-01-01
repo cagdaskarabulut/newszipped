@@ -1,13 +1,13 @@
-@import "../../styles/mixins.scss";
-@import "../../styles/colors.scss";
-@import "../../styles/globals.scss";
+@import "../styles/mixins.scss";
+@import "../styles/colors.scss";
+@import "../styles/globals.scss";
 
 .ContainerPageContainerStyle {
   display: flex !important;
   flex-direction: column !important;
   min-height: 98vh !important;
   margin: 0 !important;
-  color: $main !important;
+  color: $font !important;
   font-size: 16px !important;
   background-color: $background !important;
 
@@ -21,23 +21,36 @@
     }
   }
 
-  h1,
-  h1 a,
-  h2,
-  h2 a {
-    color: $secondary !important;
-  }
-
   .HeaderStyle {
+    // min-height: 50px !important;
+
+    h1,
+    h1 a,
+    h2,
+    h2 a {
+      color: $orangeDark !important;
+    }
+
     @include tablet-or-less {
       min-height: 65px !important;
     }
   }
+
+  .ContentStyle {
+    // @include tablet-or-less {
+    //   padding: 0px !important;
+    //   :global {
+    //     .MuiGrid-root {
+    //       padding-top: 0px !important;
+    //     }
+    //   }
+    // }
+  }
 }
 
-.HomePageInfoStyle {
+.HomePageInfoStyle{
   color: $main;
-  h1 {
+  h1{
     color: $secondary;
   }
 }

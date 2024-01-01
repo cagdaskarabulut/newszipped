@@ -14,8 +14,8 @@ const MetaPanel = ({
   iconPath,
 }) => {
   const router = useRouter();
-  let siteName = "leagueoflegends-skins";
-  let siteUrl = "https://www.leagueoflegends-skins.com";
+  let siteName = process.env.SITE_NAME;
+  let siteUrl = process.env.URL;
 
   let currentFullPathUrl = siteUrl + router.asPath;
   let imageFullPathUrl = siteUrl + imagePath;

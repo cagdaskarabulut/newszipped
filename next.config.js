@@ -9,6 +9,10 @@ module.exports = {
   // reactStrictMode: false,
   // webpack5: true,
   webpack5: true,
+  images: {
+    domains: ["localhost"],
+    unoptimized: true
+  },
   webpack(config, { isServer }) {
     config.resolve.fallback = { fs: false };
     if (isServer) {
