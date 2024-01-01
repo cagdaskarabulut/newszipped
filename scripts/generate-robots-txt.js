@@ -2,7 +2,6 @@ const fs = require("fs");
 const rootPath = process.env.URL;
 const websiteUrl = process.env.URL_WEBSITE;
 const websiteUrlRootomain = process.env.URL_WEBSITE_ROOT_DOMAIN;
-const isLocal = process.env.IS_LOCAL; // TODO sadece localde true olacak, yüklenirken false a çevir
 const now = getNowWithISOFormat();
 
 function getNowWithISOFormat() {
@@ -127,7 +126,6 @@ daily
 // }
 
 function generateRobotsTxtAndSitemapXml() {
-  if (!isLocal) {
     let dynamicRobotsTxtFields = "";
     let dynamicSitemapFields = addStaticValuesIntoSitemapList();
     console.log("url: " + process.env.URL + "/api/article_url_list");
@@ -157,7 +155,6 @@ function generateRobotsTxtAndSitemapXml() {
         fs.writeFileSync("public/robots.txt", robotsTxt);
         fs.writeFileSync("public/sitemap.xml", sitemapXml);
       });
-  }
 }
 
 module.exports = generateRobotsTxtAndSitemapXml;

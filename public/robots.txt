@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /why-does-iphone-get-so-hot-how-can-it-be-fixed
+Allow: /why-apple-magic-mouse-sensitivity-is-too-slow-and-how to-fix-it
+Allow: /what-to-do-if-you-have-been-in-contact-with-individuals-infected-with-coronavirus
+
+Disallow: /AdminPanel
+Disallow: /AdminPanelLogin
+# Sitemaps
+Sitemap: https://www.newszipped.com/sitemap.xml
