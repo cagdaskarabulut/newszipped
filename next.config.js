@@ -6,8 +6,6 @@ const nextConfig = {};
 module.exports = nextConfig;
 
 module.exports = {
-  // reactStrictMode: false,
-  // webpack5: true,
   webpack5: true,
   images: {
     unoptimized: true
