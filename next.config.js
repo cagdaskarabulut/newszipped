@@ -10,7 +10,6 @@ module.exports = {
   // webpack5: true,
   webpack5: true,
   images: {
-    domains: ["localhost"],
     unoptimized: true
   },
   webpack(config, { isServer }) {
