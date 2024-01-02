@@ -102,29 +102,6 @@ daily
   return result;
 }
 
-// function generateRobotsTxtAndSitemapXml() {
-//   let dynamicRobotsTxtFields = "";
-//   let dynamicSitemapFields = addStaticValuesIntoSitemapList();
-
-//   fetch(rootPath + "/api/article_summary_url_list", {method: 'GET'})
-//   .then((res) => res.json())
-//   .then((dataList) => {
-//     //- add auto generated urls
-//     dataList?.article_summary_url_list?.rows.map((article, index) => {
-//       dynamicRobotsTxtFields = addUrlToRobotsList(dynamicRobotsTxtFields,article.url);
-//       dynamicSitemapFields = addUrlToSitemapList(dynamicSitemapFields,article.url);
-//     });
-
-//     //-generate final files to store
-//     let robotsTxt = generateFinalRobotsTxtFile(dynamicRobotsTxtFields);
-//     let sitemapXml = generateFinalSitemapXmlFile(dynamicSitemapFields);
-
-//     //-create physical files
-//     fs.writeFileSync("public/robots.txt", robotsTxt);
-//     fs.writeFileSync("public/sitemap.xml", sitemapXml);
-//   });
-// }
-
 function generateRobotsTxtAndSitemapXml() {
     let dynamicRobotsTxtFields = "";
     let dynamicSitemapFields = addStaticValuesIntoSitemapList();
