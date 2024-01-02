@@ -2,6 +2,7 @@ const fs = require("fs");
 const rootPath = process.env.URL;
 const websiteUrl = process.env.URL_WEBSITE;
 const websiteUrlRootomain = process.env.URL_WEBSITE_ROOT_DOMAIN;
+const isLocal = process.env.IS_LOCAL; // TODO sadece localde true olacak, yüklenirken false a çevir
 const now = getNowWithISOFormat();
 
 function getNowWithISOFormat() {
@@ -102,7 +103,31 @@ daily
   return result;
 }
 
+// function generateRobotsTxtAndSitemapXml() {
+//   let dynamicRobotsTxtFields = "";
+//   let dynamicSitemapFields = addStaticValuesIntoSitemapList();
+
+//   fetch(rootPath + "/api/article_summary_url_list", {method: 'GET'})
+//   .then((res) => res.json())
+//   .then((dataList) => {
+//     //- add auto generated urls
+//     dataList?.article_summary_url_list?.rows.map((article, index) => {
+//       dynamicRobotsTxtFields = addUrlToRobotsList(dynamicRobotsTxtFields,article.url);
+//       dynamicSitemapFields = addUrlToSitemapList(dynamicSitemapFields,article.url);
+//     });
+
+//     //-generate final files to store
+//     let robotsTxt = generateFinalRobotsTxtFile(dynamicRobotsTxtFields);
+//     let sitemapXml = generateFinalSitemapXmlFile(dynamicSitemapFields);
+
+//     //-create physical files
+//     fs.writeFileSync("public/robots.txt", robotsTxt);
+//     fs.writeFileSync("public/sitemap.xml", sitemapXml);
+//   });
+// }
+
 function generateRobotsTxtAndSitemapXml() {
+  if (!isLocal) {
     let dynamicRobotsTxtFields = "";
     let dynamicSitemapFields = addStaticValuesIntoSitemapList();
     console.log("url: " + process.env.URL + "/api/article_url_list");
@@ -132,6 +157,7 @@ function generateRobotsTxtAndSitemapXml() {
         fs.writeFileSync("public/robots.txt", robotsTxt);
         fs.writeFileSync("public/sitemap.xml", sitemapXml);
       });
+  }
 }
 
 module.exports = generateRobotsTxtAndSitemapXml;
