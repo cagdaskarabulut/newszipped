@@ -1,5 +1,5 @@
 //manuel
-let isLocal = true; // TODO sadece localde true olacak, yüklenirken false a çevir
+let isLocal = false; // TODO sadece localde true olacak, yüklenirken false a çevir
 //auto
 let url = "";
 let websiteUrl = "";
@@ -105,18 +105,12 @@ daily
 }
 
 function generateRobotsTxtAndSitemapXml() {
-
-  if(isLocal){
-    url = "http://localhost:3000";
+  if (!isLocal) {
+    url = "https://www.newszipped.com"; //   url = "http://localhost:3000";
     websiteUrl = "https://www.newszipped.com";
-  } else {
-    url = "https://www.newszipped.com";
-    websiteUrl = "https://www.newszipped.com";
-  }
 
-  if (isLocal) {
     let dynamicRobotsTxtFields = "";
-    let dynamicSitemapFields = addStaticValuesIntoSitemapList();
+
     fetch(url + "/api/article_url_list", {
       method: "GET",
     })
