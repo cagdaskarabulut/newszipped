@@ -1,8 +1,7 @@
 const fs = require("fs");
-const rootPath = process.env.URL;
-const websiteUrl = process.env.URL_WEBSITE;
-const websiteUrlRootomain = process.env.URL_WEBSITE_ROOT_DOMAIN;
-const isLocal = process.env.IS_LOCAL; // TODO sadece localde true olacak, yüklenirken false a çevir
+const websiteUrl = "https://www.newszipped.com";
+const websiteUrlRootomain = "https://www.newszipped.com";
+const isLocal = false; // TODO sadece localde true olacak, yüklenirken false a çevir
 const now = getNowWithISOFormat();
 
 function getNowWithISOFormat() {
