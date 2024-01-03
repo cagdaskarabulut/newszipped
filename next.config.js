@@ -6,8 +6,6 @@ const nextConfig = {};
 module.exports = nextConfig;
 
 module.exports = {
-  // reactStrictMode: false,
-  // webpack5: true,
   webpack5: true,
   images: {
     domains: ["ngqpwjurxt7h45ds.public.blob.vercel-storage.com"],
