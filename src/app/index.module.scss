@@ -1,0 +1,35 @@
+@import "../styles/mixins.scss";
+@import "../styles/colors.scss";
+// @import "../app/globals.scss";
+
+.ContainerPageContainerStyle {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 98vh !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  background-color: $backgroundColor !important;
+
+  :global {
+    .MuiChip-label {
+      font-size: 14px !important;
+    }
+
+    .MuiTypography-root {
+      font-size: 14px !important;
+    }
+  }
+
+  .HeaderStyle {
+    @include tablet-or-less {
+      min-height: 65px !important;
+    }
+  }
+}
+
+.HomePageInfoStyle{
+  color: $fontColor;
+  h1{
+    color: rgba(0, 0, 0, 0.6);
+  }
+}

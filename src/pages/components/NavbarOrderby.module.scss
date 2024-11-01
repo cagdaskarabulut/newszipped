@@ -1,0 +1,31 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+// @import "../../app/globals.scss";
+
+
+.NavbarContainerStyle {
+  width: 100%;
+  align-items: center;
+  min-height: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  @include tablet-or-less {
+    flex-direction: row;
+  }
+}
+
+.TopicContainerStyle {
+  padding: 10px !important;
+
+  input {
+    padding: 0px !important;
+  }
+
+  :global {
+    .MuiAutocomplete-input {
+      padding: 0px !important;
+    }
+  }
+}

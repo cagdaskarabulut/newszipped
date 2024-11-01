@@ -1,0 +1,32 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/common.scss";
+
+.SearchBoxStyle {
+  :global {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: $searchBarColor !important;
+      border-width: 2px !important;
+    }
+
+    .MuiInputBase-input {
+      font-family: inherit !important;
+      color: $searchBarColor !important;
+    }
+
+    .MuiSvgIcon-root {
+      color: $fontColor !important;
+    }
+
+    .MuiInputLabel-root {
+      color: $fontColor !important;
+      font-family: inherit !important;
+
+    }
+
+    .MuiAutocomplete-input {
+      font-family: inherit !important;
+      color: $searchBarColor !important;
+    }
+  }
+}

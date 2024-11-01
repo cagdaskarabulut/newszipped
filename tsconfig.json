@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/app/api/auth/[...nextauth]/route.ts",
+    "src/pages/api/article/[url].js",
+    "src/pages/api/article/[is_liked_by_user].js",
+    "src/app/[article]/page.js",
+    "src/app/[article]/page.js"
+, "src/hooks/useProjectMetaTags.js", "src/components/reusableComponents/Carousel.jsx", "src/pages/api/article/list_filter.tss", "src/app/page.tsx", "src/pages/components/Navbar.js", "src/pages/api/article/list_filter_size.js", "src/pages/api/article/list_filter_size.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

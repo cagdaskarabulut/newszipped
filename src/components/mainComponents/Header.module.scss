@@ -1,0 +1,107 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/buttons.scss";
+@import "../../styles/common.scss";
+
+.HeaderContainerStyle {
+  top: 0 !important;
+  width: 100vw;
+  border-radius: 0px;
+  margin: 0px;
+  padding: 0px;
+  // background-color: $headerBackgroundColor !important;
+  background: $headerBackgroundColor1;
+  background: linear-gradient(0deg, $headerBackgroundColor1 0%, $headerBackgroundColor2 100%);
+
+  .header {
+    justify-content: center;
+    font-family: permanentMarker !important;
+
+    .LogoStyle {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding-left: 0px !important;
+      cursor: pointer;
+    }
+
+    .SearchBoxStyle {
+      margin-right: 30px !important;
+      margin-top: 5px !important;
+      justify-content: end;
+      float: right;
+
+      @include tablet-or-less {
+        margin-right: 0px !important;
+        padding-right: 32px !important;
+      }
+
+      .SearchBoxIconStyle {
+        font-size: 24px !important;
+        height: 35px !important;
+        margin-top: 12px !important;
+        color: $fontColor !important;
+        float: right !important;
+      }
+
+      @include tablet-or-less {
+        margin-right: 0px !important;
+      }
+
+      :global {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: $fontColor !important;
+          border-width: 1px !important;
+        }
+
+        .MuiInputBase-input {
+          font-family: inherit !important;
+          color: $fontColor !important;
+        }
+
+        .MuiSvgIcon-root {
+          color: $fontColor !important;
+        }
+
+        .MuiInputLabel-root {
+          color: $fontColor !important;
+          font-family: inherit !important;
+
+        }
+
+        .MuiAutocomplete-input {
+          font-family: inherit !important;
+          color: $fontColor !important;
+        }
+      }
+
+      @include tablet-or-less {
+        width: 100% !important;
+      }
+
+    }
+  }
+}
+
+.loginButtonStyle {
+  min-width: 100px !important;
+  float: right !important;
+  margin-top: 20px !important;
+}
+
+.loginButtonStyleSmall {
+  color: $bodyContentBackgroundColor1 !important;
+  background-color: $loginButtonBackgroundColor !important;
+  border-color: $loginButtonBackgroundColor !important;
+  min-width: 50px !important;
+  float: right !important;
+  margin-top: 15px !important;
+  border-radius: 3px !important;
+  margin-bottom: 10px !important;
+  height: 40px !important;
+}
+
+.commentButtonStyle {
+  min-width: 100px !important;
+  float: right !important;
+  margin-top: 10px !important;
+}

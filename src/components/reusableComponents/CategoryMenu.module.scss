@@ -1,0 +1,81 @@
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.MainContainerStyle {
+  margin-top: 5px !important;
+}
+
+.ListContainerStyle {
+  flex-direction: column;
+  max-height: 95vh;
+  /* Ekranın %90'ını geçmeyecek şekilde yükseklik sınırı */
+  overflow-y: auto;
+  /* İçerik yüksekliği sınırları aşarsa dikey kaydırma çubuğu ekle */
+  max-width: 100% !important;
+
+
+  @include tablet-or-less {
+    flex-direction: row !important; // flex-wrap: nowrap !important;
+    overflow-x: scroll !important;
+    display: flex;
+    // width: 100%;
+    // justify-content: space-between !important;
+  }
+}
+
+.menuItem {
+  position: relative;
+  padding: 8px 16px !important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: $categoryMenuSelectedBackgroundColor;
+    transition: width 0.8s ease;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    width: 100%;
+    transition: width 0.8s ease;
+  }
+
+  &:hover {
+    color: $categoryMenuSelectedFontColor !important;
+    background-color: transparent !important;
+  }
+
+  &.active {
+    color: $categoryMenuSelectedFontColor !important;
+    background-color: $categoryMenuSelectedBackgroundColor !important;
+  }
+
+  z-index: 1;
+}
+
+.FilterTextboxStyle {
+  :global {
+
+    .MuiInputBase-root {
+      // height: 36px; // Yüksekliği burada ayarlıyoruz
+      font-size: 0.875rem; // Font boyutunu küçültüyoruz
+    }
+
+    .MuiInputLabel-root {
+      font-size: 0.75rem; // Etiketin font boyutunu küçültüyoruz
+    }
+
+    .MuiOutlinedInput-input {
+      padding: 8px 12px; // İç paddingi küçülterek içerik hizalamasını koruyoruz
+    }
+  }
+}

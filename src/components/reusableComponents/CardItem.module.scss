@@ -1,0 +1,94 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/common.scss";
+
+
+.CardStyle,
+.CardManyStyle {
+  margin-top: 20px;
+  padding: 10px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .CardHeaderTitleStyle {
+    font-weight: 700;
+    font-size: 24px;
+    color: $fontColor;
+    cursor: pointer;
+  }
+
+  .CardBigImageHeaderTitleStyle {
+    font-weight: 700;
+    font-size: 18px;
+    color: $fontColor;
+    cursor: pointer;
+  }
+
+  .CardHeaderDateStyle {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .CardHeaderRightStyle {
+    float: right;
+  }
+
+  .BodyContent,
+  .BodyContentBigImage {
+    margin-top: 10px !important;
+
+    .BodyLeftContentStyle,
+    .SmallBodyLeftContentStyle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      /* after x line show ... */
+      -webkit-box-orient: vertical;
+      color: $headerFontColor !important;
+
+      h1 {
+        display: none;
+      }
+
+      @include tablet-or-less {
+        padding-right: 35px !important;
+      }
+    }
+
+    .SmallBodyLeftContentStyle {
+      @include desktop {
+        padding-right: 50px !important;
+      }
+    }
+
+    .BodyRightContentStyle {
+      width: 100px;
+      height: 75px;
+      position: relative;
+      float: right !important;
+    }
+
+    .BodyRightContentStyle,
+    .BodyLeftContentStyle,
+    .SmallBodyLeftContentStyle {
+      cursor: pointer;
+    }
+  }
+}
+
+.CardManyStyle {
+  width: 30% !important;
+  margin: 5px !important;
+  padding: 5px !important;
+}
+
+.TopicListStyle {
+  margin-top: 16px;
+}

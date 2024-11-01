@@ -1,0 +1,38 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+
+.menuPanelStyle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 100% !important;
+
+  @include tablet-or-less {
+    align-items: flex-start !important;
+    width: 100% !important;
+    display: inline-grid !important;
+  }
+
+  .menuButtonStyle,
+  .menuButtonStyleSelected {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    border: none !important;
+    background: linear-gradient(90deg, $searchBarColor, $searchBarColor) !important;
+    background-size: 0% 3px !important;
+    background-repeat: no-repeat !important;
+    background-position: left bottom !important;
+    transition: background-size 300ms ease !important;
+
+    &:hover {
+      background-size: 100% 3px !important;
+      color: $cautionColor !important;
+    }
+  }
+
+  .menuButtonStyleSelected {
+    color: $cautionColor !important;
+    background-size: 100% 3px !important;
+
+  }
+}

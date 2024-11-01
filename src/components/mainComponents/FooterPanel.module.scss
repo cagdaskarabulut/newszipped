@@ -1,0 +1,18 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/common.scss";
+// @import "../../app/globals.scss";
+
+.footerStyle {
+  position: inherit;
+  // background-color: $footerBackgroundColor !important;
+  background: $footerBackgroundColor1;
+  background: linear-gradient(180deg, $footerBackgroundColor1 0%, $footerBackgroundColor2 100%);
+
+  font-weight: bold !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  .FooterContentStyle {
+    width: 100%;
+    text-align: center;
+  }
+}

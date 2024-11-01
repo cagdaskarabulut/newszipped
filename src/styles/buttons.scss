@@ -1,0 +1,46 @@
+@import "./colors.scss";
+@import "./mixins.scss";
+
+// .firstButtonStyle,
+// .secondButtonStyle,
+.commentButtonStyle,
+.loginButtonStyle {
+  border-width: 1px !important;
+  border-style: solid !important;
+  padding: 5px !important;
+  text-decoration: none !important;
+  border-radius: 5px !important;
+  transition: 0.3s !important;
+}
+
+// .firstButtonStyle {
+//   color: $firstButtonFontColor !important;
+//   background-color: $firstButtonBackgroundColor !important ;
+//   border-color: $firstButtonBorderColor !important ;
+// }
+
+// .secondButtonStyle {
+//   color: $secondButtonFontColor !important;
+//   background-color: $secondButtonBackgroundColor !important;
+//   border-color: $secondButtonBorderColor !important;
+// }
+
+.commentButtonStyle {
+  color: $commentButtonFontColor !important;
+  background-color: $commentButtonBackgroundColor !important;
+  border-color: $commentButtonBorderColor !important;
+}
+
+.loginButtonStyle {
+  color: $loginButtonFontColor !important;
+  background-color: $loginButtonBackgroundColor !important;
+  border-color: $loginButtonBorderColor !important;
+}
+
+// .firstButtonStyle:hover,
+// .secondButtonStyle:hover,
+.commentButtonStyle:hover,
+.loginButtonStyle:hover {
+  opacity: 0.6;
+  cursor: pointer !important;
+}

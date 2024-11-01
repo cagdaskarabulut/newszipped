@@ -1,0 +1,48 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+
+// Varsayılan stil
+// .gridContainer {
+//   display: flex;
+//   max-width: 1200px;
+//   margin: 0 auto;
+
+//   // Medya sorgusu ile sadece geniş ekranlarda aktif hale gelir
+//   @include desktop {
+//     justify-content: flex-start !important; // Sol baştan başlama
+//   }
+
+//   @include tablet-or-less {
+//     justify-content: center !important; // Sol baştan başlama
+//   }
+// }
+
+
+
+// Diğer stiller
+.titleStyle {
+  color: $fontColor;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 10px 26px rgba(0, 0, 0, 0.1);
+  transform: perspective(1000px) translateZ(30px);
+  background-color: $backgroundColor;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include tablet-or-less {
+    // padding-top: 0px !important;
+    position: relative !important;
+  }
+}

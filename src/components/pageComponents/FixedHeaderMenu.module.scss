@@ -1,0 +1,65 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); // Transparent background
+  backdrop-filter: blur(10px); // Blur effect for background
+  z-index: 1000; // Ensure it stays above other content
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease; // Smooth background change
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logoContainer {
+  margin-right: auto;
+}
+
+.navList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-right: 20px;
+}
+
+.navItem {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menuButton {
+  color: #fff !important;
+  position: absolute !important; // Keep the icon fixed at a specific point
+  right: 55px !important; // Space from the right
+  top: 15px !important; // Space from the top
+  z-index: 1100 !important; // Ensure it stays on top
+  padding: 12px !important;
+}
+
+.drawer {
+  background-color: rgba(0, 0, 0, 0.2) !important; // Transparent background similar to header
+  backdrop-filter: blur(10px); // Blur effect to match the header
+  color: #fff;
+  height: 100%; // Ensures it covers the full height of the screen
+}
+
+.drawer .MuiListItem-root {
+  padding-left: 20px !important; // Soldan 20px mesafe bırakılır
+}

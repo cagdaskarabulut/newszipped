@@ -1,0 +1,73 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/common.scss";
+
+.ContainerPageContainerStyle {
+  background-color: $backgroundColor !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 98vh !important;
+  margin: 0 !important;
+  color: $fontColor !important;
+  font-size: 16px !important;
+
+  :global {
+    .MuiChip-label {
+      font-size: 14px !important;
+    }
+
+    .MuiTypography-root {
+      font-size: 14px !important;
+    }
+  }
+
+  h1,
+  h1 a,
+  h2,
+  h2 a {
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .HeaderStyle {
+    @include tablet-or-less {
+      min-height: 65px !important;
+    }
+  }
+
+  // .ContentStyle {
+  //   margin-top: 40px;
+  // }
+
+}
+
+.HomePageInfoStyle {
+  color: $fontColor;
+
+  h1 {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .ArticleImageContainerStyle {
+    width: 100%;
+    position: relative;
+    height: 40vh;
+
+    @include tablet-or-less {
+      height: 25vh;
+    }
+  }
+}
+
+.PanelContainerStyle {
+  // background-color: $bodyContentBackgroundColor !important;
+  background: $bodyContentBackgroundColor1;
+  background: radial-gradient(circle, $bodyContentBackgroundColor1 0%, $bodyContentBackgroundColor2 100%);
+  border-radius: 5px;
+  // margin-left: 30px;
+  // margin-right: 30px;
+
+  @include tablet-or-less {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
